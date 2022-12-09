@@ -1,7 +1,7 @@
-/.idea
+/.idea/
 *.iml
-/misc
+misc/
 *.class
-/out
-/dump
-*/potential
+out/
+dump/
+potential/

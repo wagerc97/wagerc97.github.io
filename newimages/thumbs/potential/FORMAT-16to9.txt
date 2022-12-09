@@ -1,4 +1,0 @@
-1. Bild in ppp laden
-2. Entweder Länge auf 16cm oder Höhe auf 9cm einstellen
-3. Was übersteht, ausschneiden.
-4. Als Grafik speichern.

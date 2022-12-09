@@ -9,9 +9,5 @@ The pictures on this webpage are freely available on one of the following sites:
 - https://unsplash.com/
 - https://www.pexels.com/de-de/
 
-The basic structure was adapted from https://html5up.net/strata
+I adapted the structure of this template https://html5up.net/strata
 
-<br>
-<br>
-<br>
-... thank you for your interest and reading this far.

@@ -1,0 +1,48 @@
+---
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'William Gerlach · Scientist + Software Developer',
+  description = 'Data scientist and materials researcher building computational tools for modeling, simulation, and scientific discovery.',
+} = Astro.props as Props;
+const currentPath = Astro.url.pathname;
+---
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/images/favicon/developer.png" type="image/png" />
+    <script>
+      (function () {
+        const STORAGE_KEY = 'wag-theme';
+        try {
+          const stored = localStorage.getItem(STORAGE_KEY);
+          const preferred = stored || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.dataset.theme = preferred;
+        } catch (error) {
+          document.documentElement.dataset.theme = 'light';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="sr-only" href="#content">Skip to content</a>
+    <div class="page-grid">
+      <Navigation currentPath={currentPath} />
+      <main id="content">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

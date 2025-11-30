@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { modopyHighlight, projects } from '../data/site';
+---
+<BaseLayout title="Software Projects · William Gerlach" description="Scientific software for modeling, simulation, and data science.">
+  <section class="section" id="modopy">
+    <SectionHeading
+      kicker="modopy"
+      title="Workflow-native materials modeling toolkit"
+      description="Featured Python library designed to orchestrate simulations, experiments, and metadata."
+    />
+    <div class="split">
+      <article class="card">
+        <span class="status-chip">{modopyHighlight.status}</span>
+        <h3 class="card__title">{modopyHighlight.title}</h3>
+        <p class="card__description">{modopyHighlight.description}</p>
+        <ul class="bullet-list">
+          {modopyHighlight.bullets.map((bullet) => (
+            <li>{bullet}</li>
+          ))}
+        </ul>
+        <div class="action-group">
+          {modopyHighlight.actions.map((action) => {
+            const isDisabled = Boolean(action.disabled);
+            const variant = isDisabled ? 'dashed' : action.variant ?? 'ghost';
+            return (
+              <a
+                class={`button ${variant}`}
+                href={isDisabled ? undefined : action.href}
+                aria-disabled={isDisabled}
+                tabindex={isDisabled ? -1 : undefined}
+              >
+                {action.label}
+              </a>
+            );
+          })}
+        </div>
+      </article>
+      <article class="card">
+        <h3 class="card__title">Roadmap</h3>
+        <ul class="bullet-list">
+          <li>Resource graph DSL with provenance metadata.</li>
+          <li>Adapters for JAX, CALPHAD, and FEM solvers.</li>
+          <li>Notebook components for experiment comparison.</li>
+          <li>Deployments that target HPC queues and GitHub Actions.</li>
+        </ul>
+        <p class="card__description">Subscribe via the blog to get early documentation drops.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <SectionHeading
+      kicker="Portfolio"
+      title="Practitioner software"
+      description="Elegantly structured interfaces that bring scientific rigor into production."
+    />
+    <div class="grid cols-3">
+      {projects.map((project) => (
+        <article class="card">
+          <div class="card__title" style="font-weight:600; display:flex; justify-content:space-between; gap:0.5rem; align-items:center;">
+            <span>{project.title}</span>
+            <a href={project.link} target="_blank" rel="noreferrer" aria-label={`Open ${project.title} on GitHub`}>
+              ↗
+            </a>
+          </div>
+          <p class="card__description">{project.description}</p>
+          <div class="badges">
+            {project.badges.map((badge) => (
+              <span class="badge">{badge}</span>
+            ))}
+          </div>
+          <div class="badges" style="margin-top:0.4rem;">
+            {project.stack.map((stack) => (
+              <span class="badge" style="background:var(--border); color:var(--text); opacity:0.8;">{stack}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

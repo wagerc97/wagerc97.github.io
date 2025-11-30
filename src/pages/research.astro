@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { researchThemes, publications, talks, teaching } from '../data/site';
+---
+<BaseLayout title="Research · William Gerlach" description="Data-centric materials science research portfolio.">
+  <section class="section">
+    <SectionHeading
+      kicker="Research"
+      title="Interrogating materials through simulation + data"
+      description="Merging multi-scale physics with statistical rigor to answer questions that matter for mission-ready hardware."
+    />
+    <div class="grid cols-2">
+      <article class="card">
+        <h3 class="card__title">What I study</h3>
+        <p class="card__description">
+          Phase transformations, diffusion, and structure-property evolution in advanced alloys, with an emphasis on capturing
+          uncertainty from sparse experiments.
+        </p>
+      </article>
+      <article class="card">
+        <h3 class="card__title">How I approach it</h3>
+        <p class="card__description">
+          Integrated workflows that fuse high-performance simulation, Bayesian calibration, and interactive analysis surfaces to
+          keep teams tightly looped in with the data.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <SectionHeading
+      kicker="Focus Areas"
+      title="Themes"
+      description="Research threads currently in motion."
+    />
+    <div class="grid cols-3">
+      {researchThemes.map((theme) => (
+        <article class="card">
+          <h3 class="card__title">{theme.title}</h3>
+          <p class="card__description">{theme.description}</p>
+          <div class="badges">
+            {theme.tags.map((tag) => (
+              <span class="badge">{tag}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <SectionHeading kicker="Publications" title="Selected work" description="Citation-style list" />
+    <ul class="list-divider">
+      {publications.map((pub) => (
+        <li>
+          <strong>{pub.title}</strong>
+          <span>{pub.authors}</span>
+          <div>{pub.venue} · {pub.year}</div>
+          <div class="badges">
+            {pub.tags.map((tag) => (
+              <span class="badge">{tag}</span>
+            ))}
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="section">
+    <SectionHeading kicker="Talks" title="Conferences & Activities" description="Reverse chronological" />
+    <ul class="list-divider">
+      {talks.map((talk) => (
+        <li>
+          <strong>{talk.title}</strong>
+          <div>{talk.event} · {talk.year}</div>
+          {talk.link !== '#' && (
+            <a href={talk.link} target="_blank" rel="noreferrer">Slides / Recording</a>
+          )}
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="section">
+    <SectionHeading kicker="Teaching" title="Teaching & Mentoring" />
+    <div class="grid cols-2">
+      {teaching.map((item) => (
+        <article class="card">
+          <h3 class="card__title">{item.role}</h3>
+          <p><strong>{item.org}</strong></p>
+          <p class="card__description">{item.summary}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

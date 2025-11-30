@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { timeline, credentials } from '../data/site';
+---
+<BaseLayout title="About · William Gerlach" description="Background, mission, and credentials.">
+  <section class="section">
+    <SectionHeading
+      kicker="About"
+      title="Scientist + Software Developer"
+      description="I thrive where lab notebooks meet production code."
+    />
+    <div class="grid cols-2">
+      <article class="card">
+        <h3 class="card__title">Scientific narrative</h3>
+        <p class="card__description">
+          My materials science PhD instilled a bias toward rigorous modeling and carefully curated datasets. Industry roles stretched that
+          rigor into production environments, teaching me how to mingle research curiosity with dependable software shipped to teams.
+        </p>
+        <p class="card__description">
+          Today I lead blended teams of scientists and engineers, owning the entire lifecycle—from hypothesis and computation to
+          dashboards deployed inside mission programs.
+        </p>
+      </article>
+      <article class="card">
+        <h3 class="card__title">Principles</h3>
+        <ul class="bullet-list">
+          <li>Reproducibility is a feature, not an option.</li>
+          <li>Every model should explain its uncertainty.</li>
+          <li>People-first collaboration beats sterile handoffs.</li>
+          <li>Elegant interfaces help scientists trust their data.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <SectionHeading kicker="Journey" title="Timeline" />
+    <ul class="timeline">
+      {timeline.map((item) => (
+        <li>
+          <strong>{item.label}</strong>
+          <div>{item.title}</div>
+          <p class="card__description">{item.detail}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="section">
+    <SectionHeading kicker="Profiles" title="Credentials & Links" description="Grab the long-form documents." />
+    <div class="grid cols-3">
+      {credentials.map((cred) => (
+        <article class="card">
+          <a class="card__title" href={cred.href} target="_blank" rel="noreferrer">{cred.label}</a>
+          <p class="card__description">Open in new tab</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

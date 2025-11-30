@@ -1,0 +1,25 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import { navLinks } from '../data/site';
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath = '/' } = Astro.props as Props;
+---
+<header class="site-nav" aria-label="Primary">
+  <a class="site-nav__logo" href="/">WAG · Lab</a>
+  <nav>
+    {navLinks.map((link) => (
+      <a
+        class={`site-nav__link${currentPath === link.href ? ' active' : ''}`}
+        href={link.href}
+        aria-current={currentPath === link.href ? 'page' : undefined}
+      >
+        {link.label}
+      </a>
+    ))}
+  </nav>
+  <ThemeToggle />
+</header>

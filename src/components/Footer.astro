@@ -1,0 +1,13 @@
+---
+import { contact } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer>
+  <div>Scientist + Software Developer · Data-driven Materials Research</div>
+  <div class="footer__links">
+    {contact.socials.map((item) => (
+      <a href={item.href} target="_blank" rel="noreferrer">{item.label}</a>
+    ))}
+  </div>
+  <div>© {year} William A. Gerlach</div>
+</footer>

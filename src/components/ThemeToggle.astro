@@ -1,0 +1,35 @@
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">
+  <span class="theme-toggle__thumb" aria-hidden="true"></span>
+  <span>Light</span>
+  <span>Dark</span>
+</button>
+<script>
+  const STORAGE_KEY = 'wag-theme';
+  const root = document.documentElement;
+  const button = document.getElementById('themeToggle');
+
+  const applyTheme = (value) => {
+    root.dataset.theme = value;
+    try {
+      localStorage.setItem(STORAGE_KEY, value);
+    } catch (error) {
+      // ignore storage errors
+    }
+  };
+
+  const stored = (() => {
+    try {
+      return localStorage.getItem(STORAGE_KEY);
+    } catch (error) {
+      return null;
+    }
+  })();
+
+  const preferred = stored || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  applyTheme(preferred);
+
+  button?.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+  });
+</script>

@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { contact } from '../data/site';
+---
+<BaseLayout title="Contact" description="Get in touch for collaborations, consulting, or speaking.">
+  <section class="section">
+    <SectionHeading
+      kicker="Contact"
+      title="Let’s collaborate"
+      description="Happy to talk about research collaborations, software audits, or conference invitations."
+    />
+    <div class="split">
+      <article class="card contact-card">
+        <div><strong>Email</strong><br /><a href={`mailto:${contact.email}`}>{contact.email}</a></div>
+        <div><strong>Location</strong><br />{contact.location}</div>
+        <div>
+          <strong>Socials</strong>
+          <div class="badges" style="margin-top:0.4rem;">
+            {contact.socials.map((social) => (
+              <a class="badge" href={social.href} target="_blank" rel="noreferrer">{social.label}</a>
+            ))}
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <h3 class="card__title">Quick note</h3>
+        <p class="card__description">Drop me a line via email or send a short message with the form below.</p>
+        <form class="contact-form" action={`mailto:${contact.email}`} method="post" enctype="text/plain">
+          <label>
+            Name
+            <input type="text" name="name" required />
+          </label>
+          <label>
+            Organization
+            <input type="text" name="organization" />
+          </label>
+          <label>
+            Message
+            <textarea name="message" required></textarea>
+          </label>
+          <button class="button primary" type="submit">Send</button>
+        </form>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

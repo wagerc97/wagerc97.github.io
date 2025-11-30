@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { heroContent, researchThemes, projects, blogNotes } from '../data/site';
+---
+<BaseLayout title="Scientist + Software Developer" description={heroContent.summary}>
+  <section class="hero">
+    <div class="hero__copy">
+      <p class="hero__title">{heroContent.title}</p>
+      <h1>{heroContent.name}</h1>
+      <p class="hero__summary">{heroContent.summary}</p>
+      <p class="hero__secondary">{heroContent.secondary}</p>
+      <div class="hero__actions">
+        {heroContent.actions.map((action) => (
+          <a class={`button ${action.variant}`} href={action.href}>{action.label}</a>
+        ))}
+      </div>
+    </div>
+    <div class="hero__media">
+      <img src="/images/avatar/me.jpg" alt="Portrait of William Gerlach" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="section">
+    <SectionHeading
+      kicker="Research Focus"
+      title="Scientist obsessed with data-driven materials discovery"
+      description="Connecting simulations, experiments, and statistical inference to produce trustworthy science."
+    />
+    <div class="grid cols-3">
+      {researchThemes.map((theme) => (
+        <article class="card">
+          <h3 class="card__title">{theme.title}</h3>
+          <p class="card__description">{theme.description}</p>
+          <div class="badges">
+            {theme.tags.map((tag) => (
+              <span class="badge">{tag}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <SectionHeading
+      kicker="Software"
+      title="Technical platforms built for scientists"
+      description="Bringing production-grade engineering practices to computational research teams."
+    />
+    <div class="grid cols-3">
+      {projects.map((project) => (
+        <article class="card">
+          <div class="card__title" style="font-weight:600; display:flex; justify-content:space-between; gap:0.5rem; align-items:center;">
+            <span>{project.title}</span>
+            <a href={project.link} target="_blank" rel="noreferrer" aria-label={`Open ${project.title} on GitHub`}>
+              ↗
+            </a>
+          </div>
+          <p class="card__description">{project.description}</p>
+          <div class="badges">
+            {project.stack.map((stack) => (
+              <span class="badge">{stack}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <SectionHeading
+      kicker="Updates"
+      title="Field notes & announcements"
+      description="Compact notes documenting research decisions, experiments, and modopy progress."
+    />
+    <div class="note-cards">
+      {blogNotes.map((note) => (
+        <article class="note-card">
+          <time>{note.date}</time>
+          <h3>{note.title}</h3>
+          <p>{note.summary}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { blogNotes } from '../data/site';
+---
+<BaseLayout title="Blog & Updates" description="Short-form research and software notes.">
+  <section class="section">
+    <SectionHeading
+      kicker="Notes"
+      title="Field log"
+      description="Plain-text announcements tracking conference talks, experiments, and modopy milestones."
+    />
+    <p class="card__description">
+      Posts stay intentionally light—bullets, checklists, and signal over prose. Expect references to notebooks, GitHub branches, and
+      conference decks.
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="note-cards">
+      {blogNotes.map((note) => (
+        <article class="note-card">
+          <time>{note.date}</time>
+          <h3>{note.title}</h3>
+          <p>{note.summary}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

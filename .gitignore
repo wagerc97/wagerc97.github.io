@@ -6,3 +6,4 @@ out/
 dump/
 potential/
 test/
+/node_modules/

@@ -12,6 +12,6 @@
     "check": "astro check"
   },
   "dependencies": {
-    "astro": "^4.12.1"
+    "astro": "^5.16.3"
   }
 }

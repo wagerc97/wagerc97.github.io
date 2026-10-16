@@ -48,9 +48,7 @@
         // Continue without persistence when browser storage is unavailable.
       }
   };
-  const getPreferredTheme = () =>
-    getSavedTheme() ||
-    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const getPreferredTheme = () => getSavedTheme() || 'light';
   applyTheme(getPreferredTheme());
   themeToggle?.addEventListener('click', () => {
     applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark', true);

@@ -1,0 +1,15 @@
+@media print {
+  .site-header,
+  .site-footer,
+  .actions,
+  .contact-box {
+    display: none;
+  }
+  .page-hero,
+  section {
+    padding: 1.25rem 0;
+  }
+  .card {
+    break-inside: avoid;
+  }
+}

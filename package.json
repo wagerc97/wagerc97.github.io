@@ -1,0 +1,21 @@
+{
+  "name": "html5up_editorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write index.html 404.html sites/*.html assets/css/main.css assets/css/print.css assets/js/main.js TODO.md PROGRESS.md .github/workflows/*.yml",
+    "format:check": "prettier --check index.html 404.html sites/*.html assets/css/main.css assets/css/print.css assets/js/main.js TODO.md PROGRESS.md .github/workflows/*.yml",
+    "lint": "html-validate index.html 404.html sites/*.html",
+    "check": "npm run format:check && npm run lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "html-validate": "^11.16.1",
+    "prettier": "^3.9.9"
+  },
+  "private": true
+}

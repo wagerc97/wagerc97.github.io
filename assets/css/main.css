@@ -952,6 +952,16 @@ html[data-theme='dark'] .timeline {
 html[data-theme='dark'] .site-footer {
   background: #0f1a20;
 }
+html[data-theme='dark'] .contact-box {
+  color: #0b2029;
+}
+html[data-theme='dark'] .contact-box p {
+  color: #30444e;
+}
+html[data-theme='dark'] .contact-box a,
+html[data-theme='dark'] .email-reveal {
+  color: #0b2029;
+}
 .menu-toggle:focus-visible {
   outline: 3px solid #e7a84b;
   outline-offset: 3px;

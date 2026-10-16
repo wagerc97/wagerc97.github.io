@@ -1,0 +1,7 @@
+node_modules/
+my_content/
+images/
+assets/css/fontawesome-all.min.css
+assets/js/*.min.js
+package-lock.json
+LICENSE.txt

@@ -90,6 +90,7 @@
   const setToggleState = (expanded) => {
     toggle?.setAttribute('aria-expanded', String(expanded));
     toggle?.setAttribute('aria-label', expanded ? 'Close navigation' : 'Open navigation');
+    document.body.classList.toggle('navigation-open', expanded);
   };
   const openSidebar = () => {
     if (!sidebar || !toggle) return;

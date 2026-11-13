@@ -740,12 +740,16 @@ section {
 }
 .topbar-actions {
   display: flex;
+  height: 2.1rem;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 1.75rem;
 }
 .social-links {
   display: flex;
+  height: 100%;
   align-items: center;
+  flex: 0 0 auto;
   gap: 0.2rem;
 }
 .social-links a {
@@ -762,6 +766,14 @@ section {
 .social-links .icon,
 .social-links .fab {
   font-size: 1rem;
+}
+.topbar-actions .menu-toggle {
+  position: relative;
+  top: 0.4rem;
+  width: 2.1rem;
+  height: 100%;
+  flex: 0 0 auto;
+  align-self: center;
 }
 .site-sidebar {
   position: fixed;
@@ -859,6 +871,20 @@ section {
 }
 body {
   padding-top: 4.6rem;
+}
+body::before {
+  position: fixed;
+  z-index: 4;
+  inset: 4.6rem 0 0;
+  background: linear-gradient(to left, #071c2566 0%, #071c2533 60%, transparent 100%);
+  content: '';
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+body.navigation-open::before {
+  opacity: 1;
+  pointer-events: auto;
 }
 @media (min-width: 1001px) {
   body.sidebar-collapsed .site-sidebar {

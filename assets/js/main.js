@@ -70,9 +70,10 @@
   };
   const getSidebarCollapsed = () => {
     try {
-      return window.sessionStorage.getItem('sidebar-collapsed') === 'true';
+      const collapsed = window.sessionStorage.getItem('sidebar-collapsed');
+      return collapsed === null || collapsed === 'true';
     } catch {
-      return false;
+      return true;
     }
   };
   const setSidebarCollapsed = (collapsed) => {
